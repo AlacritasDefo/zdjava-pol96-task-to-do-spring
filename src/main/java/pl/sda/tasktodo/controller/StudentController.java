@@ -58,7 +58,7 @@ public class StudentController {
                 .id(dto.getId())
                 .content(dto.getContent())
                 .build());
-        return "redirect:./student";
+        return "redirect:/student";
     }
 
     @GetMapping("/student/task-details/{id}")
