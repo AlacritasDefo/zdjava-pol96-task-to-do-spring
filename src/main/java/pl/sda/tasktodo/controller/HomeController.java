@@ -14,7 +14,7 @@ public class HomeController {
         this.configuration = configuration;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home(Model model){
         model.addAttribute("pageSize", configuration.getPageSize());
         model.addAttribute("pageStart", configuration.getPageStart());
