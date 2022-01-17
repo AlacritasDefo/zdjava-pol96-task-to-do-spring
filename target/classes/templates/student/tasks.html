@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="main::head">
+</head>
+<body>
+<nav th:replace="main::navigation">
+</nav>
+    <div class="fluid-container m-3">
+        <h1>Twoje zadania</h1>
+    </div>
+    <div class="fluid-container m-3">
+        <table th:class="${tableColor}">
+            <thead>
+                <tr>
+                    <th>
+                        Nazwa
+                    </th>
+                    <th>
+                        Termin ostatecznego wykonania
+                    </th>
+                    <th>
+                        Termin wykonania
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="st: ${tasks}">
+                    <td>
+                        <div th:text="${st.getTask().getName()}">AA</div>
+                        <div th:text="${st.content}"></div>
+                    </td>
+                    <td>
+                        <span th:text="${st.getTask().getDeadline()}">AA</span>
+                    </td>
+                    <td>
+                        <span th:text="${st.getFinishDate()}">BB</span>
+                    </td>
+                    <td>
+                        <p th:if="${st.note == 0}">Brak punktow</p>
+                        <p th:if="${st.note != 0}"><span th:text="${st.note}"> </span></p>
+                        <a th:href="@{/student/task/{id}(id = ${st.getId()})}">Przejdź do wykonania zadania</a>
+                        <a th:href="@{/student/task-details/{id}(id=${st.getId()})}">Przejdź do szczegółów zadania</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<footer th:insert="main::footer">
+</footer>
+</body>
+</html>
